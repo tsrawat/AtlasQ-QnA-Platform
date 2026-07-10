@@ -17,6 +17,8 @@ Add all three variables from `.env.example` in **Vercel → Project → Settings
 
 The endpoint may be named either `NEXT_PUBLIC_APPWRITE_HOST_URL` (used by this project's original setup) or `NEXT_PUBLIC_APPWRITE_ENDPOINT` (the name shown by newer Appwrite setup instructions). Only one endpoint variable is required.
 
+This repository includes public fallback values for the AtlasQ Appwrite endpoint and project ID. Vercel still requires the private `APPWRITE_API_KEY`; never commit that key to the repository.
+
 In **Appwrite Console → Project → Overview/Integrations → Platforms**, add a Web platform for every hostname that will access Appwrite:
 
 - your production hostname, such as `your-project.vercel.app`
