@@ -8,6 +8,7 @@ import { IconCaretUpFilled, IconCaretDownFilled } from "@tabler/icons-react";
 import { ID, Models, Query } from "appwrite";
 import { useRouter } from "next/navigation";
 import React from "react";
+import VoteCount, { publishVoteCount } from "./VoteCount";
 
 const VoteButtons = ({
     type,
@@ -23,8 +24,6 @@ const VoteButtons = ({
     className?: string;
 }) => {
     const [votedDocument, setVotedDocument] = React.useState<Models.Document | null>(); // undefined means not fetched yet
-    const [voteResult, setVoteResult] = React.useState<number>(upvotes.total - downvotes.total);
-
     const { user } = useAuthStore();
     const router = useRouter();
 
@@ -61,8 +60,8 @@ const VoteButtons = ({
 
             if (!response.ok) throw data;
 
-            setVoteResult(() => data.data.voteResult);
             setVotedDocument(() => data.data.document);
+            publishVoteCount({ type, typeId: id, count: data.data.voteResult });
         } catch (error: any) {
             window.alert(error?.message || "Something went wrong");
         }
@@ -88,8 +87,8 @@ const VoteButtons = ({
 
             if (!response.ok) throw data;
 
-            setVoteResult(() => data.data.voteResult);
             setVotedDocument(() => data.data.document);
+            publishVoteCount({ type, typeId: id, count: data.data.voteResult });
         } catch (error: any) {
             window.alert(error?.message || "Something went wrong");
         }
@@ -109,7 +108,9 @@ const VoteButtons = ({
             >
                 <IconCaretUpFilled />
             </button>
-            <span className="text-sm font-semibold">{voteResult}</span>
+            <span className="text-sm font-semibold">
+                <VoteCount type={type} typeId={id} initialCount={upvotes.total + downvotes.total} />
+            </span>
             <button
                 className={cn(
                     "atlas-focus flex h-10 w-10 items-center justify-center rounded-md border border-[#6B2D3A]/55 bg-[hsl(var(--panel))] p-1 text-[#6B2D3A] transition hover:-translate-y-0.5 hover:bg-[#6B2D3A]/12",

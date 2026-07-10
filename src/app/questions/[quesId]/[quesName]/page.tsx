@@ -22,6 +22,7 @@ import { Badge, LinkButton, PageShell, StatCard, Surface } from "@/components/de
 import { ArrowLeft, MessageSquare, Triangle } from "lucide-react";
 import { calculateReputation } from "@/lib/reputation";
 import UserAvatar from "@/components/UserAvatar";
+import VoteCount from "@/components/VoteCount";
 
 const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: string }> }) => {
     const { quesId } = await params;
@@ -95,7 +96,7 @@ const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: st
                             <div className="mt-4 flex flex-wrap gap-3 text-sm text-[hsl(var(--muted))]">
                                 <span>Asked {convertDateToRelativeTime(new Date(question.$createdAt))}</span>
                                 <span>{answers.total} answers</span>
-                                <span>{upvotes.total + downvotes.total} votes</span>
+                                <span><VoteCount type="question" typeId={question.$id} initialCount={upvotes.total + downvotes.total} /> votes</span>
                             </div>
                         </div>
                         <LinkButton href="/questions" variant="secondary" className="w-full shrink-0 md:w-auto">
@@ -163,7 +164,7 @@ const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: st
                 </div>
 
                 <aside className="space-y-4">
-                    <StatCard label="Votes" value={upvotes.total + downvotes.total} detail="Community confidence signal" />
+                    <StatCard label="Votes" value={<VoteCount type="question" typeId={question.$id} initialCount={upvotes.total + downvotes.total} />} detail="Community confidence signal" />
                     <StatCard label="Answers" value={answers.total} detail="Responses attached to this question" />
                     <Surface>
                             <h2 className="font-semibold">Answer tips</h2>

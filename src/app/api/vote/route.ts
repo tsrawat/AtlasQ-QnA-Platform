@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
         await users.updatePrefs<UserPrefs>(target.authorId, { ...prefs, reputation });
 
         return NextResponse.json({
-            data: { document, voteResult: upvotes.total - downvotes.total },
+            data: { document, voteResult: upvotes.total + downvotes.total },
             message: document ? (existingVote ? "Vote Status Updated" : "Voted") : "Vote Withdrawn",
         }, { status: document ? 201 : 200 });
     } catch (error: any) {
