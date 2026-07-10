@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AtlasQ
 
 AtlasQ is a clean full-stack college project for asking questions, posting answers, voting, searching, and viewing user profiles.
@@ -45,3 +46,6 @@ npm run lint
 npx tsc --noEmit
 npm run build
 ```
+=======
+# AtlasQ-QnA-Platform
+>>>>>>> origin/main
