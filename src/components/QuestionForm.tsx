@@ -67,20 +67,16 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
     };
 
     const create = async () => {
-        if (!formData.attachment) throw new Error("Please upload an image");
-
-        const storageResponse = await storage.createFile(
-            questionAttachmentBucket,
-            ID.unique(),
-            formData.attachment
-        );
+        const storageResponse = formData.attachment
+            ? await storage.createFile(questionAttachmentBucket, ID.unique(), formData.attachment)
+            : null;
 
         const response = await databases.createDocument(db, questionCollection, ID.unique(), {
             title: formData.title,
             content: formData.content,
             authorId: formData.authorId,
             tags: Array.from(formData.tags),
-            attachmentId: storageResponse.$id,
+            ...(storageResponse ? { attachmentId: storageResponse.$id } : {}),
         });
 
         loadConfetti();

@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Button, LinkButton } from "@/components/design-system";
 import { useAuthStore } from "@/store/Auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { UserPlus } from "lucide-react";
 
 export default function Register() {
     const { login, createAccount } = useAuthStore();
+    const router = useRouter();
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState("");
 
@@ -36,7 +38,12 @@ export default function Register() {
             setError(response.error.message);
         } else {
             const loginResponse = await login(email.toString(), password.toString());
-            if (loginResponse.error) setError(loginResponse.error.message);
+            if (loginResponse.error) {
+                setError(loginResponse.error.message);
+            } else {
+                router.push("/questions");
+                router.refresh();
+            }
         }
 
         setIsLoading(false);

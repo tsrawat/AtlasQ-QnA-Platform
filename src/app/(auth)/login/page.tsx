@@ -52,7 +52,15 @@ export default function Login() {
                     <Input id="email" name="email" placeholder="you@company.com" type="email" autoComplete="email" />
                 </div>
                 <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
+                    <div className="flex items-center justify-between gap-4">
+                        <Label htmlFor="password">Password</Label>
+                        <Link
+                            href="/forgot-password"
+                            className="atlas-focus rounded text-sm font-semibold text-[hsl(var(--brand-strong))] hover:underline"
+                        >
+                            Forgot password?
+                        </Link>
+                    </div>
                     <Input id="password" name="password" placeholder="Enter your password" type="password" autoComplete="current-password" />
                 </div>
                 <Button className="w-full" type="submit" disabled={isLoading}>

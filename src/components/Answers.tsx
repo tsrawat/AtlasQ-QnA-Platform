@@ -56,7 +56,7 @@ const Answers = ({
                 ],
             }));
         } catch (error: any) {
-            window.alert(error?.message || "Error creating answer");
+            window.alert(error?.message || error?.error || "Error creating answer");
         }
     };
 
