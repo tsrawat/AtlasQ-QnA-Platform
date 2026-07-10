@@ -169,18 +169,63 @@ body {
 
 .atlas-markdown pre {
   overflow-x: auto;
-  border: 1px solid hsl(var(--foreground) / 0.18);
+  border: 1px solid #374151;
   border-radius: 0.65rem;
-  background: hsl(var(--background) / 0.82);
-  color: hsl(var(--foreground));
+  background: #111827 !important;
+  color: #e5e7eb !important;
   padding: 1rem;
+  opacity: 1;
+  line-height: 1.65;
+  tab-size: 4;
 }
 
 .atlas-markdown pre code {
   border: 0;
-  background: transparent;
-  color: inherit;
+  background: transparent !important;
+  color: #e5e7eb !important;
   padding: 0;
+  opacity: 1 !important;
+  text-shadow: none;
+  font-weight: 400;
+}
+
+/* One Dark-inspired, high-contrast palette for rendered Markdown code blocks.
+   Keep these rules scoped so editor chrome and the rest of the UI are unaffected. */
+.atlas-markdown pre code span {
+  opacity: 1 !important;
+}
+
+.atlas-markdown pre :is(.token.comment, .token.prolog, .token.doctype, .token.cdata, .pl-c) {
+  color: #9ca3af !important;
+  font-style: italic;
+}
+
+.atlas-markdown pre :is(.token.keyword, .token.atrule, .token.important, .pl-k) {
+  color: #c792ea !important;
+}
+
+.atlas-markdown pre :is(.token.string, .token.char, .token.attr-value, .token.regex, .pl-s, .pl-pds) {
+  color: #a7d88d !important;
+}
+
+.atlas-markdown pre :is(.token.number, .token.boolean, .token.constant, .token.symbol, .pl-c1) {
+  color: #f6c177 !important;
+}
+
+.atlas-markdown pre :is(.token.function, .token.function-variable, .pl-en) {
+  color: #82aaff !important;
+}
+
+.atlas-markdown pre :is(.token.class-name, .token.builtin, .token.namespace, .token.type, .pl-c1) {
+  color: #64d8cb !important;
+}
+
+.atlas-markdown pre :is(.token.operator, .token.entity, .token.url, .token.punctuation, .pl-pds) {
+  color: #d1d5db !important;
+}
+
+.atlas-markdown pre :is(.token.property, .token.tag, .token.selector, .token.attr-name, .token.variable, .pl-ent, .pl-v) {
+  color: #f78c9c !important;
 }
 
 /* Keep inline Markdown code readable and prevent renderer syntax colors from overriding it. */
