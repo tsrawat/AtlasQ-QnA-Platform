@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 27 45% 91%; /* #F3E8DF */
+  --foreground: 358 27% 21%; /* #452829 */
+  --panel: 27 50% 96%;
+  --panel-strong: 21 43% 84%; /* #E8D1C5 */
+  --muted: 210 2% 35%; /* #57595B */
+  --muted-2: 210 2% 51%;
+  --border: 210 2% 35%;
+  --brand: 358 27% 21%; /* #452829 */
+  --brand-hover: 358 24% 29%;
+  --brand-strong: 358 27% 21%;
+  --accent: 21 43% 84%;
+  --button-text: 27 45% 91%;
+  --danger: 5 32% 44%;
+  --success: 142 20% 37%;
+  --warning: 37 37% 43%;
+  --ring: 21 43% 84%;
+}
+
+* {
+  border-color: hsl(var(--border) / 0.32);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: hsl(var(--brand-strong) / 0.3);
+}
+
+/* Keep the Markdown editor aligned with the shared neutral dark theme. */
+.w-md-editor,
+.wmde-markdown,
+.wmde-markdown-var {
+  --color-fg-default: hsl(var(--foreground));
+  --color-fg-muted: hsl(var(--muted));
+  --color-fg-subtle: hsl(var(--muted-2));
+  --color-canvas-default: hsl(var(--panel));
+  --color-canvas-subtle: hsl(var(--panel-strong) / 0.47);
+  --color-border-default: hsl(var(--border));
+  --color-border-muted: hsl(var(--border) / 0.72);
+  --color-neutral-muted: hsl(var(--brand) / 0.13);
+  --color-accent-fg: hsl(var(--brand-strong));
+  --color-accent-emphasis: hsl(var(--brand));
+  --color-prettylights-syntax-comment: hsl(var(--muted));
+  --color-prettylights-syntax-constant: hsl(var(--brand-strong));
+  --color-prettylights-syntax-entity: hsl(var(--brand));
+  --color-prettylights-syntax-string: hsl(var(--brand-strong));
+  --color-prettylights-syntax-keyword: hsl(var(--danger));
+  color-scheme: light;
+}
+
+.w-md-editor {
+  --md-editor-background-color: hsl(var(--panel));
+  --md-editor-box-shadow-color: hsl(var(--border));
+  overflow: hidden;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 0 1px hsl(var(--border)), 0 10px 24px -20px hsl(var(--foreground) / 0.5);
+}
+
+.w-md-editor-toolbar {
+  padding: 0.45rem;
+  background: hsl(var(--panel-strong) / 0.5);
+}
+
+.w-md-editor-toolbar li > button {
+  border-radius: 0.3rem;
+  color: hsl(var(--foreground)) !important;
+  opacity: 1 !important;
+}
+
+.w-md-editor-toolbar li > button svg {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.w-md-editor-toolbar li > button:disabled {
+  color: hsl(var(--muted)) !important;
+  opacity: 0.58 !important;
+}
+
+.w-md-editor-toolbar li > button:hover,
+.w-md-editor-toolbar li > button:focus,
+.w-md-editor-toolbar li.active > button {
+  background: hsl(var(--panel-strong)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.w-md-editor-text-input::selection {
+  background: hsl(var(--brand) / 0.25);
+}
+
+.w-md-editor-preview {
+  background: hsl(var(--panel));
+}
+
+/* The package injects its own theme after global styles load; keep it neutral. */
+.w-md-editor[data-color-mode="light"],
+.w-md-editor[data-color-mode="light"] .wmde-markdown-var,
+.w-md-editor[data-color-mode="light"] .wmde-markdown {
+  --color-fg-default: hsl(var(--foreground)) !important;
+  --color-fg-muted: hsl(var(--muted)) !important;
+  --color-fg-subtle: hsl(var(--muted-2)) !important;
+  --color-canvas-default: hsl(var(--panel)) !important;
+  --color-canvas-subtle: hsl(var(--panel-strong) / 0.45) !important;
+  --color-border-default: hsl(var(--border)) !important;
+  --color-border-muted: hsl(var(--border) / 0.72) !important;
+  --color-neutral-muted: hsl(var(--brand) / 0.13) !important;
+  --color-accent-fg: hsl(var(--brand-strong)) !important;
+  --md-editor-background-color: hsl(var(--panel)) !important;
+  --md-editor-box-shadow-color: hsl(var(--border)) !important;
+  background-color: hsl(var(--panel)) !important;
+  color: hsl(var(--foreground)) !important;
+  color-scheme: light !important;
+}
+
+.w-md-editor[data-color-mode="light"] .w-md-editor-content,
+.w-md-editor[data-color-mode="light"] .w-md-editor-area,
+.w-md-editor[data-color-mode="light"] .w-md-editor-text,
+.w-md-editor[data-color-mode="light"] .w-md-editor-toolbar {
+  background-color: hsl(var(--panel)) !important;
+}
+
+.w-md-editor[data-color-mode="light"] .w-md-editor-toolbar {
+  background-color: hsl(var(--panel-strong) / 0.5) !important;
+}
+
+/* Force all editor surfaces to the centralized secondary surface. */
+.w-md-editor,
+.w-md-editor .w-md-editor-content,
+.w-md-editor .w-md-editor-area,
+.w-md-editor .w-md-editor-text,
+.w-md-editor .w-md-editor-preview,
+.w-md-editor .wmde-markdown,
+.w-md-editor .wmde-markdown-var {
+  background-color: hsl(var(--panel)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.w-md-editor .w-md-editor-toolbar,
+.w-md-editor .w-md-editor-toolbar-child {
+  background-color: hsl(var(--panel-strong) / 0.58) !important;
+}
+
+.w-md-editor-toolbar li.active > button {
+  background: hsl(var(--panel-strong)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.atlas-markdown code {
+  border: 1px solid hsl(var(--border) / 0.8);
+  border-radius: 0.3rem;
+  background: hsl(var(--panel-strong) / 0.62);
+  color: hsl(var(--brand-strong));
+  padding: 0.12rem 0.32rem;
+}
+
+.atlas-markdown pre {
+  overflow-x: auto;
+  border: 1px solid hsl(var(--foreground) / 0.18);
+  border-radius: 0.65rem;
+  background: hsl(var(--background) / 0.82);
+  color: hsl(var(--foreground));
+  padding: 1rem;
+}
+
+.atlas-markdown pre code {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { border: 2px solid hsl(var(--background)); border-radius: 999px; background: hsl(var(--accent) / 0.75); }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--brand-hover)); }
+
+@layer components {
+  .atlas-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))];
+  }
+
+  .atlas-panel {
+    @apply border border-[hsl(var(--border)/0.16)] bg-[hsl(var(--panel))] shadow-[0_8px_30px_hsl(var(--foreground)/0.08)];
+  }
+}
