@@ -86,19 +86,19 @@ const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: st
 
     return (
         <PageShell>
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-8">
                 <div className="min-w-0">
-                    <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                        <div>
+                    <div className="mb-5 flex min-w-0 flex-col gap-3 sm:mb-6 sm:gap-4 md:flex-row md:items-start md:justify-between">
+                        <div className="min-w-0">
                             <Badge tone="brand">Question</Badge>
-                            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance">{question.title}</h1>
+                            <h1 className="mt-4 break-words text-4xl font-semibold tracking-tight text-balance">{question.title}</h1>
                             <div className="mt-4 flex flex-wrap gap-3 text-sm text-[hsl(var(--muted))]">
                                 <span>Asked {convertDateToRelativeTime(new Date(question.$createdAt))}</span>
                                 <span>{answers.total} answers</span>
                                 <span>{upvotes.total + downvotes.total} votes</span>
                             </div>
                         </div>
-                        <LinkButton href="/questions" variant="secondary" className="shrink-0">
+                        <LinkButton href="/questions" variant="secondary" className="w-full shrink-0 md:w-auto">
                             <ArrowLeft className="size-4" aria-hidden="true" />
                             Back to questions
                         </LinkButton>
@@ -106,12 +106,12 @@ const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: st
 
                     <Surface className="p-0">
                         <div className="grid gap-0 lg:grid-cols-[92px_minmax(0,1fr)]">
-                            <div className="border-b p-4 lg:border-b-0 lg:border-r">
-                                <div className="flex items-center gap-3 lg:flex-col">
+                            <div className="border-b p-3 sm:p-4 lg:border-b-0 lg:border-r">
+                                <div className="flex flex-wrap items-center gap-3 lg:flex-col lg:flex-nowrap">
                                     <VoteButtons
                                         type="question"
                                         id={question.$id}
-                                        className="w-full"
+                                        className="w-auto flex-row gap-x-3 gap-y-0 lg:w-full lg:flex-col lg:gap-x-0 lg:gap-y-3"
                                         upvotes={upvotes}
                                         downvotes={downvotes}
                                     />
@@ -123,8 +123,8 @@ const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: st
                                     <DeleteQuestion questionId={question.$id} authorId={question.authorId} />
                                 </div>
                             </div>
-                            <article className="min-w-0 p-5">
-                                <MarkdownPreview className="markdown-content rounded-lg border bg-[hsl(var(--panel-strong))] p-4" source={question.content} />
+                            <article className="min-w-0 p-3 sm:p-5">
+                                <MarkdownPreview className="markdown-content min-w-0 rounded-lg border bg-[hsl(var(--panel-strong))] p-3 sm:p-4" source={question.content} />
                                 {question.attachmentId && (
                                     <picture>
                                         <img
@@ -141,9 +141,9 @@ const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: st
                                         </Link>
                                     ))}
                                 </div>
-                                <div className="mt-6 flex items-center justify-end gap-3">
+                                <div className="mt-6 flex min-w-0 items-center justify-end gap-3">
                                     <UserAvatar name={author.name} avatarId={author.prefs.avatarId} avatarVersion={author.prefs.avatarVersion} className="size-10 border-2 border-[hsl(var(--accent))] shadow-sm" />
-                                    <div className="leading-tight">
+                                    <div className="min-w-0 break-words leading-tight">
                                         <Link
                                             href={`/users/${author.$id}/${slugify(author.name)}`}
                                             className="atlas-focus rounded font-semibold hover:text-[hsl(var(--brand-strong))]"

@@ -260,6 +260,21 @@ body {
   margin: 0.35rem 0;
 }
 
+/* Contain unbroken Markdown content on narrow question/answer cards. */
+.markdown-content {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.markdown-content :is(img, video, iframe, table) {
+  max-width: 100%;
+}
+
+.markdown-content :is(pre, table) {
+  overflow-x: auto;
+}
+
 ::-webkit-scrollbar {
   width: 0.7rem;
   height: 0.7rem;

@@ -93,14 +93,15 @@ const Answers = ({
             )}
             {answers.documents.map(answer => (
                 <Surface key={answer.$id} className="overflow-hidden p-0 transition duration-200 hover:border-[hsl(var(--brand)/0.5)] hover:shadow-[0_16px_35px_-25px_hsl(var(--foreground)/0.6)]">
-                    <div className="grid lg:grid-cols-[92px_minmax(0,1fr)]">
-                        <div className="border-b bg-[hsl(var(--panel-strong)/0.38)] p-4 lg:border-b-0 lg:border-r">
-                            <div className="flex items-center gap-3 lg:flex-col">
+                    <div className="grid min-w-0 lg:grid-cols-[92px_minmax(0,1fr)]">
+                        <div className="border-b bg-[hsl(var(--panel-strong)/0.38)] p-3 sm:p-4 lg:border-b-0 lg:border-r">
+                            <div className="flex flex-wrap items-center gap-3 lg:flex-col lg:flex-nowrap">
                                 <VoteButtons
                                     type="answer"
                                     id={answer.$id}
                                     upvotes={answer.upvotesDocuments}
                                     downvotes={answer.downvotesDocuments}
+                                    className="flex-row gap-x-3 gap-y-0 lg:flex-col lg:gap-x-0 lg:gap-y-3"
                                 />
                                 {user?.$id === answer.authorId ? (
                                     <button
@@ -113,16 +114,16 @@ const Answers = ({
                                 ) : null}
                             </div>
                         </div>
-                        <div className="min-w-0 p-5 sm:p-6">
-                            <MarkdownPreview className="atlas-markdown markdown-content rounded-xl border bg-[hsl(var(--background)/0.72)] p-4 sm:p-5" source={answer.content} />
-                            <div className="mt-5 flex items-center justify-end gap-3 border-t border-[hsl(var(--border)/0.7)] pt-4">
+                        <div className="min-w-0 p-3 sm:p-6">
+                            <MarkdownPreview className="atlas-markdown markdown-content min-w-0 rounded-xl border bg-[hsl(var(--background)/0.72)] p-3 sm:p-5" source={answer.content} />
+                            <div className="mt-5 flex min-w-0 items-center justify-end gap-3 border-t border-[hsl(var(--border)/0.7)] pt-4">
                                 <UserAvatar
                                     name={answer.author.name}
                                     avatarId={answer.author.avatarId || answer.author.prefs?.avatarId}
                                     avatarVersion={answer.author.avatarVersion || answer.author.prefs?.avatarVersion}
                                     className="size-10 border-2 border-[hsl(var(--accent))] shadow-sm"
                                 />
-                                <div className="block leading-tight text-right">
+                                <div className="min-w-0 break-words leading-tight text-right">
                                     <Link
                                         href={`/users/${answer.author.$id}/${slugify(answer.author.name)}`}
                                         className="atlas-focus rounded font-semibold hover:text-[hsl(var(--brand-strong))]"
@@ -136,7 +137,7 @@ const Answers = ({
                     </div>
                 </Surface>
             ))}
-            <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border bg-[hsl(var(--panel)/0.9)] p-5 shadow-sm">
+            <form onSubmit={handleSubmit} className="min-w-0 space-y-4 overflow-hidden rounded-xl border bg-[hsl(var(--panel)/0.9)] p-3 shadow-sm sm:p-5">
                 <h2 className="text-xl font-semibold">Your answer</h2>
                 <RTE value={newAnswer} onChange={value => setNewAnswer(() => value || "")} data-color-mode="dark" />
                 <Button>
