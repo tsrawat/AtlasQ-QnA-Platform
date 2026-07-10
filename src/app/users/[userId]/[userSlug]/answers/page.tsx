@@ -45,7 +45,7 @@ const Page = async ({
                 {answers.documents.map(ans => (
                     <article key={ans.$id} className="rounded-xl border bg-[hsl(var(--panel)/0.9)] p-5 shadow-sm">
                         <div className="max-h-40 overflow-auto rounded-lg bg-[hsl(var(--panel-strong)/0.45)]">
-                            <MarkdownPreview source={ans.content} className="p-4" />
+                            <MarkdownPreview source={ans.content} className="markdown-content p-4" />
                         </div>
                         <Link
                             href={`/questions/${ans.questionId}/${slugify(ans.question.title)}`}

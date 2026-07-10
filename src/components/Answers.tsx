@@ -114,7 +114,7 @@ const Answers = ({
                             </div>
                         </div>
                         <div className="min-w-0 p-5 sm:p-6">
-                            <MarkdownPreview className="atlas-markdown rounded-xl border bg-[hsl(var(--background)/0.72)] p-4 sm:p-5" source={answer.content} />
+                            <MarkdownPreview className="atlas-markdown markdown-content rounded-xl border bg-[hsl(var(--background)/0.72)] p-4 sm:p-5" source={answer.content} />
                             <div className="mt-5 flex items-center justify-end gap-3 border-t border-[hsl(var(--border)/0.7)] pt-4">
                                 <UserAvatar
                                     name={answer.author.name}

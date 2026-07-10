@@ -124,7 +124,7 @@ const Page = async ({ params }: { params: Promise<{ quesId: string; quesName: st
                                 </div>
                             </div>
                             <article className="min-w-0 p-5">
-                                <MarkdownPreview className="rounded-lg border bg-[hsl(var(--panel-strong))] p-4" source={question.content} />
+                                <MarkdownPreview className="markdown-content rounded-lg border bg-[hsl(var(--panel-strong))] p-4" source={question.content} />
                                 {question.attachmentId && (
                                     <picture>
                                         <img
