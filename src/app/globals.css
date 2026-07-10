@@ -159,11 +159,11 @@ body {
   color: hsl(var(--foreground)) !important;
 }
 
-.atlas-markdown code {
+.atlas-markdown code:not(pre code) {
   border: 1px solid hsl(var(--border) / 0.8);
   border-radius: 0.3rem;
   background: hsl(var(--panel-strong) / 0.62);
-  color: hsl(var(--brand-strong));
+  color: hsl(var(--foreground));
   padding: 0.12rem 0.32rem;
 }
 
@@ -181,6 +181,17 @@ body {
   background: transparent;
   color: inherit;
   padding: 0;
+}
+
+/* Keep inline Markdown code readable and prevent renderer syntax colors from overriding it. */
+.markdown-content code:not(pre code),
+.w-md-editor-preview .wmde-markdown code:not(pre code) {
+  color: hsl(var(--foreground)) !important;
+  background: hsl(var(--panel-strong) / 0.62);
+  border: 1px solid hsl(var(--border) / 0.8);
+  border-radius: 0.3rem;
+  padding: 0.12rem 0.32rem;
+  font-weight: 500;
 }
 
 /* Tailwind's base reset removes list markers. Restore them only for Markdown. */
