@@ -15,6 +15,8 @@ npm run dev
 
 Add all three variables from `.env.example` in **Vercel → Project → Settings → Environment Variables**. Enable them for Production and Preview, then redeploy. `NEXT_PUBLIC_*` values are embedded during the build, so a redeploy is required after changing them.
 
+The endpoint may be named either `NEXT_PUBLIC_APPWRITE_HOST_URL` (used by this project's original setup) or `NEXT_PUBLIC_APPWRITE_ENDPOINT` (the name shown by newer Appwrite setup instructions). Only one endpoint variable is required.
+
 In **Appwrite Console → Project → Overview/Integrations → Platforms**, add a Web platform for every hostname that will access Appwrite:
 
 - your production hostname, such as `your-project.vercel.app`
