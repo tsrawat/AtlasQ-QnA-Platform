@@ -85,7 +85,7 @@ export default function Header() {
                 <Button
                   type="button"
                   variant="ghost"
-                  className="hidden size-10 px-0 text-[#B54848] hover:bg-[#B54848]/10 hover:text-[#B54848] sm:inline-flex"
+                  className="size-10 px-0 text-[#B54848] hover:bg-[#B54848]/10 hover:text-[#B54848]"
                   onClick={() => logout()}
                   aria-label="Log out"
                 >
