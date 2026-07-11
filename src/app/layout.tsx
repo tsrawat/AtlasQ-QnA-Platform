@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 import { cn } from "@/lib/utils";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   metadataBase: new URL("https://atlasq.local"),
   title: {
@@ -32,6 +33,7 @@ export default function RootLayout({
         <Header />
         <div className="flex flex-1 flex-col justify-center">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
